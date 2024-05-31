@@ -20,6 +20,7 @@ class RecipeViewsTestCase(TestCase):
     def test_category_list_view(self):
         response = self.client.get(reverse('category_list'))
         self.assertEqual(response.status_code, 200)
-        expected_categories = ['Category 1', 'Category 2']
-        actual_categories = [category.name for category in response.context['categories']]
-        self.assertCountEqual(actual_categories, expected_categories)
+        expected_recipe_counts = {'Category 1': 2, 'Category 2': 1}
+        categories_with_counts = {category.name: category.recipe_count for category in response.context['categories']}
+        for category_name, expected_count in expected_recipe_counts.items():
+            self.assertEqual(categories_with_counts[category_name], expected_count)
