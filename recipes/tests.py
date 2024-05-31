@@ -14,4 +14,5 @@ class RecipeViewsTestCase(TestCase):
     def test_main_view(self):
             response = self.client.get(reverse('main'))
             self.assertEqual(response.status_code, 200)
-            self.assertQuerysetEqual(response.context['latest_recipes'], ['<Recipe: Recipe 3>', '<Recipe: Recipe 2>', '<Recipe: Recipe 1>'])
+            expected_recipe_names = ['Recipe 3', 'Recipe 2', 'Recipe 1']
+            self.assertQuerysetEqual(response.context['latest_recipes'], expected_recipe_names, transform=lambda x: x.name)
