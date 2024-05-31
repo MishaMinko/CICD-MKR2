@@ -3,7 +3,7 @@ from .models import Recipe, Category
 from django.db.models import Count
 
 def main(request):
-    latest_recipes = Recipe.objects.order_by('-publication_date')[:5]
+    latest_recipes = Recipe.objects.order_by('-id')[:5]
     return render(request, 'recipe/main.html', {'latest_recipes': latest_recipes})
 
 def category_list(request):
