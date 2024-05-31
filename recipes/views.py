@@ -7,5 +7,5 @@ def main(request):
     return render(request, 'main.html', {'latest_recipes': latest_recipes})
 
 def category_list(request):
-    categories = Category.objects.annotate(recipe_count=Count('recipes'))
+    categories = Category.objects.annotate(recipe_count=Count('recipe'))
     return render(request, 'category_list.html', {'categories': categories})
