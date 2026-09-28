@@ -1,69 +1,69 @@
 # CICD-MKR2
 
-Модульна контрольна робота (МКР) з предмету **CI/CD**. Реалізує веб-застосунок на Django для обліку кулінарних рецептів, розподілених по категоріях, з налаштованим автоматичним тестуванням через GitHub Actions.
+Modular Assessment (MA) for the **CI/CD** course. Implements a Django web application for managing recipes organized by category, with automated testing configured via GitHub Actions.
 
-Проєкт виконано як модульну контрольну роботу з предмету CI/CD — практичне завдання на створення Django-застосунку з подальшою автоматизацією тестування через CI-пайплайн (GitHub Actions), що є базовим елементом процесу неперервної інтеграції (CI).
+The project was completed as a modular assignment for the CI/CD course — a practical task involving the creation of a Django application followed by the automation of testing via a CI pipeline (GitHub Actions), which is a fundamental element of the continuous integration (CI) process.
 
-## Стек технологій
+## Technology Stack
 
 - **Python**
-- **Django** — веб-фреймворк
-- **SQLite** — база даних (для розробки)
-- **PostgreSQL** — тестова база даних у CI-пайплайні
-- **GitHub Actions** — автоматичний запуск тестів
+- **Django** — web framework
+- **SQLite** — database (for development)
+- **PostgreSQL** — test database in the CI pipeline
+- **GitHub Actions** — automated test execution
 
-## Функціонал
+## Functionality
 
-- Перегляд списку рецептів
-- Перегляд рецептів за категоріями
-- Django admin-панель для керування рецептами й категоріями
+- View the list of recipes
+- View recipes by category
+- Django admin panel for managing recipes and categories
 
-## Структура проєкту
+## Project structure
 
 ```
-project_recipes/          # налаштування Django-проєкту
+project_recipes/          # Django project settings
 ├── settings.py
 ├── urls.py
 └── wsgi.py / asgi.py
 
-recipes/                  # основний застосунок
-├── models.py              # моделі Recipe, Category
-├── views.py                # відображення сторінок
-├── admin.py                # реєстрація моделей в адмінці
+recipes/                  # main application
+├── models.py              # Recipe and Category models
+├── views.py                # page views
+├── admin.py                # registering models in the admin interface
 ├── urls.py
-├── migrations/             # міграції бази даних
-└── templates/               # HTML-шаблони (main.html, category_list.html)
+├── migrations/             # database migrations
+└── templates/               # HTML templates (main.html, category_list.html)
 
-templates/base.html       # базовий шаблон
-manage.py                 # точка входу Django
-.yaml                     # конфігурація CI-пайплайну (GitHub Actions)
+templates/base.html       # base template
+manage.py                 # Django entry point
+.yaml                     # CI pipeline configuration (GitHub Actions)
 ```
 
-## Запуск
+## How to start project
 
-1. Встановіть залежності:
+1. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Застосуйте міграції:
+2. Apply migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-3. Запустіть сервер розробки:
+3. Start the development server:
 
 ```bash
 python manage.py runserver
 ```
 
-4. Відкрийте у браузері: `http://127.0.0.1:8000`
+4. Open the following URL in your browser: `http://127.0.0.1:8000`
 
-## Тестування
+## Testing
 
-CI-пайплайн автоматично піднімає тестову базу PostgreSQL, накатує міграції та запускає тести Django при кожному push або pull request:
+The CI pipeline automatically sets up the PostgreSQL test database, applies migrations, and runs Django tests with every push or pull request:
 
 ```bash
 python manage.py test
